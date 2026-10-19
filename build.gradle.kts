@@ -2,6 +2,9 @@ import dev.nucleusframework.desktop.application.dsl.AppImageCategory
 import dev.nucleusframework.desktop.application.dsl.DmgContentType
 import dev.nucleusframework.desktop.application.dsl.TargetFormat
 
+val osName = System.getProperty("os.name").lowercase()
+
+
 plugins {
     alias(libs.plugins.nucleusframework)
     alias(libs.plugins.kotlin.jvm)
@@ -85,6 +88,12 @@ nucleus.application {
 
         cleanupNativeLibs = true
         enableAotCache = true
+
+        artifactName = when {
+            "win" in osName -> $$"$${appName}-${version}.${ext}"
+            "mac" in osName -> $$"$${appName}-${version}-mac-${arch}.${ext}"
+            else -> $$"$${appName}-${version}-linux.${ext}"
+        }
 
         macOS {
             bundleID = "dev.iln.cobblemongo"
