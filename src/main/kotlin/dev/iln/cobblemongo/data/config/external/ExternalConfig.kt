@@ -17,7 +17,8 @@ data class ExternalConfig(
 
 @Serializable
 data class Resources(
-    val externalFilesURL: String,
+    val assetsURL: String,
+    val assetsDefaultURL: String,
     val modsURL: String,
 )
 

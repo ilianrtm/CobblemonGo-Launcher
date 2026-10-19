@@ -13,6 +13,7 @@ import dev.iln.cobblemongo.data.game.updater.label
 import dev.iln.cobblemongo.resources.*
 import dev.iln.cobblemongo.ui.window.AppWindow
 import fr.flowarg.flowupdater.FlowUpdater.FlowUpdaterBuilder
+import fr.flowarg.flowupdater.download.json.ExternalFile
 import fr.flowarg.flowupdater.utils.ModFileDeleter
 import fr.flowarg.flowupdater.utils.UpdaterOptions
 import fr.flowarg.flowupdater.versions.VanillaVersion.VanillaVersionBuilder
@@ -93,9 +94,15 @@ object GameManager {
 
 
     private fun update(external: ExternalConfig) {
-        var step = Res.string.game_step_java
-
         JavaChecker(external.javaVersion).checkJava()
+
+        var step = Res.string.game_step_java
+        val resources = external.resources
+
+        val externals = mutableListOf<ExternalFile>().apply {
+            addAll(ExternalFile.getExternalFilesFromJson(resources.assetsDefaultURL))
+            addAll(ExternalFile.getExternalFilesFromJson(resources.assetsURL))
+        }
 
         val vanilla = VanillaVersionBuilder()
             .withName(external.minecraftVersion)
@@ -103,7 +110,7 @@ object GameManager {
         val fabric = FabricVersionBuilder()
             .withFabricVersion(external.fabricVersion)
             .withFileDeleter(ModFileDeleter(true))
-            .withMods(external.resources.modsURL)
+            .withMods(resources.modsURL)
             .build()
         val updaterOptions = UpdaterOptions.UpdaterOptionsBuilder()
             .withJavaPath(JavaUtil.getJavaCommand())
@@ -132,7 +139,7 @@ object GameManager {
             .withUpdaterOptions(updaterOptions)
             .withVanillaVersion(vanilla)
             .withModLoaderVersion(fabric)
-            .withExternalFiles(external.resources.externalFilesURL)
+            .withExternalFiles(externals)
             .withProgressCallback(callback)
             .build()
             .update(gameDir)

@@ -9,8 +9,9 @@
   },
 
   "resources": {
-    "externalFilesURL": "https://launcher.cobblemongo.net/files.json",
-    "modsURL": "https://launcher.cobblemongo.net/mods.json"
+    "assetsURL": "https://launcher.cobblemongo.net/assets.php",
+    "assetsDefaultURL": "https://launcher.cobblemongo.net/assetsDefault.php",
+    "modsURL": "https://launcher.cobblemongo.net/mods.php"
   },
 
   "resourcePacks": [],
