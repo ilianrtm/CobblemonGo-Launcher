@@ -83,6 +83,7 @@ nucleus.application {
         packageVersion = project.version.toString()
         targetFormats(TargetFormat.Dmg, TargetFormat.Nsis, TargetFormat.AppImage, TargetFormat.Zip)
 
+        cleanupNativeLibs = true
         enableAotCache = true
 
         macOS {
