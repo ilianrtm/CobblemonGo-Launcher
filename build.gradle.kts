@@ -1,6 +1,5 @@
 import dev.nucleusframework.desktop.application.dsl.AppImageCategory
 import dev.nucleusframework.desktop.application.dsl.DmgContentType
-import dev.nucleusframework.desktop.application.dsl.ReleaseChannel
 import dev.nucleusframework.desktop.application.dsl.TargetFormat
 
 plugins {
@@ -45,7 +44,7 @@ dependencies {
     implementation(libs.flowarg.azuljavadownloader)
     implementation(libs.flowarg.flowupdater)
     implementation(libs.flowarg.openlauncherlib)
-    implementation(libs.kpresence)
+    //implementation(libs.kpresence)
 
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
@@ -69,6 +68,10 @@ compose.resources {
 
 nucleus.application {
     mainClass = "dev.iln.cobblemongo.CobblemonGoLauncherKt"
+
+    buildTypes.release.proguard {
+        isEnabled.set(false)
+    }
 
     nativeDistributions {
         appName = "CobblemonGo"
