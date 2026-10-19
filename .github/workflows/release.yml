@@ -1,0 +1,113 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build (${{ matrix.os }} / ${{ matrix.arch }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            arch: amd64
+          - os: windows-latest
+            arch: amd64
+          - os: macos-latest
+            arch: arm64
+          - os: macos-15-intel
+            arch: amd64
+
+    env:
+      RELEASE_VERSION: ${{ github.ref_name }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Nucleus
+        uses: NucleusFramework/Nucleus/.github/actions/setup-nucleus@v2.5.18
+        with:
+          java-version: "25"
+          packaging-tools: "true"
+          flatpak: "false"
+          snap: "false"
+
+      - name: Build packages
+        shell: bash
+        run: ./gradlew packageReleaseDistributionForCurrentOS --stacktrace --no-daemon
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-assets-${{ runner.os }}-${{ matrix.arch }}
+          path: |
+            build/compose/binaries/**/*.exe
+            build/compose/binaries/**/*.dmg
+            build/compose/binaries/**/*.zip
+            build/compose/binaries/**/*.AppImage
+            build/compose/binaries/**/*.blockmap
+            build/compose/binaries/**/signing-metadata.json
+            build/compose/binaries/**/packaging-metadata.json
+            !build/compose/binaries/**/app/**
+            !build/compose/binaries/**/runtime/**
+          if-no-files-found: error
+
+
+  publish:
+    name: Publish
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Download all packages
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          pattern: release-assets-*
+
+      - name: Determine version and channel
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+          case "$VERSION" in
+            *-alpha*) echo "CHANNEL=alpha" >> "$GITHUB_ENV"; echo "RELEASE_TYPE=prerelease" >> "$GITHUB_ENV" ;;
+            *-beta*)  echo "CHANNEL=beta" >> "$GITHUB_ENV";  echo "RELEASE_TYPE=prerelease" >> "$GITHUB_ENV" ;;
+            *)        echo "CHANNEL=latest" >> "$GITHUB_ENV"; echo "RELEASE_TYPE=release" >> "$GITHUB_ENV" ;;
+          esac
+
+      - name: Generate update files
+        uses: NucleusFramework/Nucleus/.github/actions/generate-update-yml@v2.5.18
+        with:
+          artifacts-path: artifacts
+          version: ${{ env.VERSION }}
+          channel: ${{ env.CHANNEL }}
+
+      - name: Publish GitHub release
+        uses: NucleusFramework/Nucleus/.github/actions/publish-release@v2.5.18
+        with:
+          artifacts-path: artifacts
+          tag: ${{ env.TAG }}
+          release-type: ${{ env.RELEASE_TYPE }}

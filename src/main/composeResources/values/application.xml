@@ -1,0 +1,7 @@
+<resources>
+    <string name="config_url">https://launcher.cobblemongo.net/config.json</string>
+    <string name="update_url">https://launcher.cobblemongo.net/updates/</string>
+    <string name="discord_url">https://discord.gg/cobblemongo</string>
+
+    <string name="discord_app_id">1338495380161167421</string>
+</resources>

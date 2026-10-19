@@ -1,0 +1,42 @@
+[versions]
+nucleus = "2.5.18"
+compose = "1.12.0"
+kotlin = "2.4.20"
+coroutines = "1.11.0"
+serialization = "1.12.0-RC"
+flowarg-azul = "1.0.2"
+flowarg-updater = "1.9.4"
+flowarg-launcherlib = "3.2.11"
+kpresence = "0.6.6"
+coil = "3.6.3"
+navigation3 = "1.1.2"
+
+[plugins]
+nucleusframework = { id = "dev.nucleusframework", version.ref = "nucleus" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+compose-plugin = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+
+[libraries]
+navigation3-ui = { module = "org.jetbrains.androidx.navigation3:navigation3-ui", version.ref = "navigation3" }
+nucleus-application = { module = "dev.nucleusframework:nucleus.nucleus-application", version.ref = "nucleus" }
+nucleus-decorated-window-tao = { module = "dev.nucleusframework:nucleus.decorated-window-tao", version.ref = "nucleus" }
+nucleus-core = { module = "dev.nucleusframework:nucleus.core-runtime", version.ref = "nucleus" }
+nucleus-autolaunch = { module = "dev.nucleusframework:nucleus.autolaunch", version.ref = "nucleus" }
+nucleus-system-info = { module = "dev.nucleusframework:nucleus.system-info", version.ref = "nucleus" }
+nucleus-updater = { module = "dev.nucleusframework:nucleus.updater-runtime", version.ref = "nucleus" }
+
+coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
+
+
+flowarg-azuljavadownloader = { module = "fr.flowarg:azuljavadownloader", version.ref = "flowarg-azul" }
+flowarg-flowupdater = { module = "fr.flowarg:flowupdater", version.ref = "flowarg-updater" }
+flowarg-openlauncherlib = { module = "fr.flowarg:openlauncherlib", version.ref = "flowarg-launcherlib" }
+kpresence = { module = "io.github.vyfor:kpresence", version.ref = "kpresence" }
+
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }

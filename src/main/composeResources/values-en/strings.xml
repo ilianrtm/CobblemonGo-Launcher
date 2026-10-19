@@ -1,0 +1,118 @@
+<resources>
+    <!--Notifs-->
+    <string name="notif_unexpected_error_title">An error occurred</string>
+    <string name="notif_unexpected_error_message">If the problem persists, send the logs on Discord.</string>
+    <string name="notif_update_failed_title">Update failed</string>
+    <string name="notif_update_failed_message">The launcher will be updated on next startup.</string>
+    <string name="notif_config_save_failed_title">Settings not saved</string>
+    <string name="notif_config_save_failed_message">The configuration could not be saved</string>
+    <string name="notif_external_config_failed_title">Configuration</string>
+    <string name="notif_external_config_failed_message">The externe configuration could not be retrieved</string>
+    <string name="notif_logged_in_title">Logged in</string>
+    <string name="notif_logged_in_message">Welcome, %1$s!</string>
+    <string name="notif_changes_discarded_title">Changes discarded</string>
+    <string name="notif_changes_discarded_message">Unsaved settings have been discarded.</string>
+    <string name="notif_dismiss">Dismiss notification</string>
+    <string name="notif_game_failed_title">Unable to launch</string>
+    <string name="notif_game_failed_message">The game could not be launched. Send the logs on Discord.</string>
+
+    <!--Common-->
+    <string name="memory_gb">%1$d GB</string>
+    <string name="update_checking">Checking for updates…</string>
+    <string name="update_downloading">Updating launcher, %1$d%</string>
+    <string name="update_installing">Installing update…</string>
+
+    <!--Window-->
+    <string name="window_minimize">Minimize</string>
+    <string name="window_close">Close</string>
+
+    <!--Login-->
+    <string name="login_logo">Logo</string>
+    <string name="login_title">Choose your username</string>
+    <string name="login_subtitle">No Microsoft account required. This is the name other players will see.</string>
+    <string name="login_button">Log in</string>
+    <string name="login_remember_me">Remember me</string>
+    <string name="login_username_label">Username</string>
+    <string name="login_username_placeholder">E.g. Trainer_62</string>
+    <string name="login_username_hint">%1$d to %2$d characters: letters, numbers or _</string>
+    <plurals name="login_username_too_short">
+        <item quantity="one">%1$d more character required.</item>
+        <item quantity="other">%1$d more characters required.</item>
+    </plurals>
+    <string name="login_username_invalid">Only letters, numbers and _ are allowed.</string>
+    <string name="login_username_valid">Valid username, you can log in.</string>
+    <string name="login_help">Trouble logging in? </string>
+    <string name="login_help_link">Ask on Discord</string>
+    <string name="login_launcher_version">Launcher v%1$s</string>
+
+    <!--Home-->
+    <string name="home_connecting">Connecting to server…</string>
+    <string name="home_server_unreachable">Server unreachable, restart the launcher</string>
+    <string name="game_step_java">Installing Java</string>
+    <string name="game_step_preparing">Preparing</string>
+    <string name="game_step_reading">Loading data</string>
+    <string name="game_step_libraries">Downloading libraries</string>
+    <string name="game_step_assets">Downloading assets</string>
+    <string name="game_step_natives">Extracting natives</string>
+    <string name="game_step_modpack">Downloading the modpack</string>
+    <string name="game_step_external_files">Downloading server files</string>
+    <string name="game_step_mod_loader">Setting up Fabric</string>
+    <string name="game_step_mods">Downloading mods</string>
+    <string name="game_step_finishing">Almost there</string>
+    <string name="game_running">Game running</string>
+    <string name="home_ready">Ready to play</string>
+    <string name="home_preparing_game">Preparing game</string>
+    <string name="home_server_online">Server online</string>
+    <string name="home_server_offline">Server offline</string>
+    <string name="home_server_searching">Looking for server…</string>
+    <plurals name="home_players_online">
+        <item quantity="one">%1$d player online</item>
+        <item quantity="other">%1$d players online</item>
+    </plurals>
+    <string name="home_change_username">Change username, logged in as %1$s</string>
+    <string name="home_memory">Memory</string>
+    <string name="home_play">Play</string>
+    <string name="home_launching">Launching</string>
+    <string name="home_download_mb">%1$s / %2$s MB</string>
+    <string name="home_download_gb">%1$s / %2$s GB</string>
+    <string name="home_discord">Discord</string>
+    <string name="home_settings">Settings</string>
+    <string name="news_title">News</string>
+    <string name="news_empty">No news for now.</string>
+    <string name="news_meta">%1$s, %2$s</string>
+    <string name="news_category_modpack">Modpack</string>
+    <string name="news_category_event">Event</string>
+    <string name="news_category_server">Server</string>
+
+    <!--Settings-->
+    <string name="settings_title">Settings</string>
+    <string name="settings_saved">Settings saved</string>
+    <string name="settings_save">Save</string>
+    <string name="settings_back">Back to home</string>
+    <string name="settings_more">More settings</string>
+    <string name="settings_launch">Launch</string>
+    <string name="settings_auto_join">Join the server directly</string>
+    <string name="settings_after_launch">When the game starts, the launcher</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_default">Default</string>
+    <string name="settings_language_restart">Restart the launcher to apply the language.</string>
+    <string name="settings_after_launch_keep">Stays open</string>
+    <string name="settings_after_launch_minimize">Minimizes</string>
+    <string name="settings_after_launch_close">Closes</string>
+    <string name="settings_display">Display</string>
+    <string name="settings_width">Width</string>
+    <string name="settings_height">Height</string>
+    <string name="settings_fullscreen">Fullscreen</string>
+    <string name="settings_memory">Allocated memory</string>
+    <string name="settings_memory_recommended">Recommended: %1$d GB</string>
+    <string name="settings_memory_recommended_of_total">Recommended: %1$d GB of %2$d GB</string>
+    <string name="settings_folders">Folders</string>
+    <string name="settings_game_folder">Game folder</string>
+    <string name="settings_open_game_folder">Open game folder</string>
+    <string name="settings_open_logs_folder">Open logs folder</string>
+    <string name="settings_logs_hint">Attach on Discord if the game crashes.</string>
+    <string name="settings_launcher_name">CobblemonGo Launcher</string>
+    <string name="settings_launcher_auto_update">Updates install automatically on startup.</string>
+    <string name="settings_launcher_version">v%1$s</string>
+    <string name="settings_launcher_up_to_date">Up to date</string>
+</resources>
