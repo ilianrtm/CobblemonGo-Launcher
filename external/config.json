@@ -9,9 +9,9 @@
   },
 
   "resources": {
-    "assetsURL": "https://launcher.cobblemongo.net/assets.php",
-    "assetsDefaultURL": "https://launcher.cobblemongo.net/assetsDefault.php",
-    "modsURL": "https://launcher.cobblemongo.net/mods.php"
+    "assetsURL": "https://dl-lv2.pixelmongo.fr/cobblemongo/assets.php",
+    "assetsDefaultURL": "https://dl-lv2.pixelmongo.fr/cobblemongo/assetsDefault.php",
+    "modsURL": "https://dl-lv2.pixelmongo.fr/cobblemongo/mods.php"
   },
 
   "resourcePacks": [],
