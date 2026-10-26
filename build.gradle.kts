@@ -80,7 +80,7 @@ nucleus.application {
         appName = "CobblemonGo"
         description = "Official launcher of CobblemonGo"
         copyright = "© 2026 CobblemonGo"
-        homepage = "https://cobblemongo.fr"
+        homepage = "https://cobblemongo.net"
 
         packageName = "CobblemonGo-Launcher"
         packageVersion = project.version.toString()
