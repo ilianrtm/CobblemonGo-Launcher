@@ -12,7 +12,8 @@ import java.net.http.HttpResponse
 
 data class ServerStatus(
     val isOnline: Boolean,
-    val onlinePlayers: Int
+    val onlinePlayers: Int,
+    val maxPlayers: Int,
 )
 
 
@@ -34,7 +35,12 @@ object StatusService {
             }
 
             val serverResponse = json.decodeFromString<StatusResponse>(response.body())
-            _status.value = ServerStatus(serverResponse.online, serverResponse.players?.online ?: 0)
+
+            _status.value = ServerStatus(
+                serverResponse.online,
+                serverResponse.players?.online ?: 0,
+                serverResponse.players?.max ?: 0,
+            )
         } catch (e: CancellationException) {
             throw e
         } catch (e: Exception) {
@@ -52,6 +58,7 @@ object StatusService {
 
     @Serializable
     private data class Players(
-        val online: Int
+        val online: Int,
+        val max: Int
     )
 }
