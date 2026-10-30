@@ -17,7 +17,6 @@ import dev.iln.cobblemongo.data.config.external.ExternalConfigState
 import dev.iln.cobblemongo.data.game.GameManager
 import dev.iln.cobblemongo.data.service.StatusService
 import dev.iln.cobblemongo.data.service.Session
-import dev.iln.cobblemongo.resources.*
 import dev.iln.cobblemongo.ui.navigation.LocalNavigator
 import dev.iln.cobblemongo.ui.navigation.Screen
 import dev.iln.cobblemongo.ui.screen.home.components.Hotbar
@@ -26,14 +25,12 @@ import dev.iln.cobblemongo.ui.screen.home.components.NewsSection
 import dev.iln.cobblemongo.ui.screen.home.components.ServerOverview
 import dev.iln.cobblemongo.ui.screen.main.components.LandscapeLevel
 import dev.iln.cobblemongo.ui.screen.main.components.hillsHeight
-import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun HomeScreen() {
     val navigator = LocalNavigator.current
     val uriHandler = LocalUriHandler.current
 
-    val discordUrl = stringResource(Res.string.discord_url)
     val model = remember { HomeModel() }
 
     val updateState by AutoUpdater.state.collectAsStateWithLifecycle()
@@ -95,7 +92,7 @@ fun HomeScreen() {
                 onAccount = { navigator.navigate(Screen.Login) },
                 onMemory = { navigator.navigate(Screen.Settings) },
                 onPlay = { model.play(externalConfig, localConfig, username) },
-                onDiscord = { uriHandler.openUri(discordUrl) },
+                onDiscord = { uriHandler.openUri(serverConfig?.discord?.inviteURL.orEmpty()) },
                 onSettings = { navigator.navigate(Screen.Settings) }
             )
         }

@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.iln.cobblemongo.core.AutoUpdater
 import dev.iln.cobblemongo.core.UpdateState
+import dev.iln.cobblemongo.data.config.external.ExternalConfigLoader
+import dev.iln.cobblemongo.data.config.external.ExternalConfigState
 import dev.iln.cobblemongo.resources.*
 import dev.iln.cobblemongo.ui.components.AppText
 import dev.iln.cobblemongo.ui.theme.AppTheme.colors
@@ -24,13 +26,15 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun LoginFooter(modifier: Modifier = Modifier) {
     val updateState by AutoUpdater.state.collectAsStateWithLifecycle()
+    val externalConfig by ExternalConfigLoader.state.collectAsStateWithLifecycle()
+    val serverConfig = (externalConfig as? ExternalConfigState.Ready)?.config
 
     val helpText = buildAnnotatedString {
         append(stringResource(Res.string.login_help))
 
         withLink(
             LinkAnnotation.Url(
-                url = stringResource(Res.string.discord_url),
+                url = serverConfig?.discord?.inviteURL.orEmpty(),
                 styles = TextLinkStyles(
                     style = SpanStyle(color = colors.teal300, textDecoration = TextDecoration.Underline),
                     hoveredStyle = SpanStyle(color = colors.teal100)

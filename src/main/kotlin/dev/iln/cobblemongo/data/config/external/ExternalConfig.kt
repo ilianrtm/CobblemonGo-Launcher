@@ -8,10 +8,18 @@ data class ExternalConfig(
     val minecraftVersion: String,
     val fabricVersion: String,
     val javaVersion: Int,
+    val discord: Discord,
     val server: ServerAddress,
     val resources: Resources,
     val resourcePacks: List<String> = emptyList(),
     val news: List<NewsItem> = emptyList(),
+)
+
+
+@Serializable
+data class Discord(
+    val appId: String,
+    val inviteURL: String,
 )
 
 

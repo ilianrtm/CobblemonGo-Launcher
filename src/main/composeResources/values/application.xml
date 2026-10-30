@@ -1,7 +1,4 @@
 <resources>
     <string name="config_url">https://dl-lv2.pixelmongo.fr/cobblemongo/config.json</string>
     <string name="update_url">https://dl-lv2.pixelmongo.fr/cobblemongo/updates/</string>
-    <string name="discord_url">https://discord.gg/cobblemongo</string>
-
-    <string name="discord_app_id">1338495380161167421</string>
 </resources>

@@ -3,6 +3,11 @@
   "fabricVersion": "0.19.3",
   "javaVersion": 21,
 
+  "discord": {
+    "appId": "1565699567926648884",
+    "inviteURL": "https://discord.gg/cobblemongo"
+  },
+
   "server": {
     "ip": "hypixel.net",
     "port": 25565
@@ -10,7 +15,7 @@
 
   "resources": {
     "assetsURL": "https://dl-lv2.pixelmongo.fr/cobblemongo/assets.php",
-    "assetsDefaultURL": "https://dl-lv2.pixelmongo.fr/cobblemongo/assetsDefault.php",
+    "assetsDefaultURL": "https://dl-lv2.pixelmongo.fr/cobblemongo/assets-default.php",
     "modsURL": "https://dl-lv2.pixelmongo.fr/cobblemongo/mods.php"
   },
 
