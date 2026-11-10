@@ -104,13 +104,13 @@ Utilisateur ──► Clic sur « Jouer »
 
 ---
 
-## 9. Auteur
+## Auteur
 
 **Ilian Ratmia** — Étudiant en informatique
 
 ---
 
-## 10. Avertissement
+## Avertissement
 
 Minecraft est une marque de Mojang Studios / Microsoft.
 Cobblemon est un projet communautaire indépendant. Ce projet n'est affilié à aucune de ces entités.
